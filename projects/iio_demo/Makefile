@@ -4,6 +4,7 @@
 # PLATFORM = aducm3029
 # PLATFORM = stm32
 # PLATFORM = linux
+PLATFORM:=linux
 
 # Select the example you want to enable by choosing y for enabling and n for disabling
 IIO_EXAMPLE = y

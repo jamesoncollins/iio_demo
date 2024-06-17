@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 2.6)
+project(iio_demo)
+
+file( GLOB_RECURSE SRC projects/iio_demo/src/common/*.c projects/iio_demo/src/platform/linux/*.c utils/*.c )
+add_executable( iio_demo 
+	drivers/api/no_os_uart.c
+	${SRC} 
+	
+)
+target_include_directories(iio_demo PRIVATE 
+	projects/iio_demo/src/common/
+	projects/iio_demo/src/platform
+	projects/iio_demo/src/platform/linux
+	drivers/adc/adc_demo
+	drivers/dac/dac_demo
+	iio
+	include
+	)
+
+message("CMAKE_SYSTEM_PROCESSOR is: ${CMAKE_SYSTEM_PROCESSOR}")
+
+if( "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "armv7l" )
+    message("Detected ARM, setting special cflags")
+    SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -O3 -march=armv7-a -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hard")
+endif()
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DLINUX_PLATFORM")
+
+install( TARGETS iio_demo DESTINATION bin )
+
+#set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -O0 -g3  -ggdb")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -O0 -g3  -ggdb")
