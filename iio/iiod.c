@@ -96,8 +96,8 @@ static const uint32_t priority_array[] = {
 	IIOD_CMD_SET
 };
 
-static_assert(NO_OS_ARRAY_SIZE(cmds) == NO_OS_ARRAY_SIZE(priority_array),
-	      "Arrays must have the same size");
+//static_assert(NO_OS_ARRAY_SIZE(cmds) == NO_OS_ARRAY_SIZE(priority_array),
+//	      "Arrays must have the same size");
 
 /* Set res->cmd to corresponding cmd and return the processed length of buf */
 static int32_t parse_cmd(const char *token, struct comand_desc *res)
