@@ -35,3 +35,6 @@ aducm_build
 
 local_variables.mk
 *generated*
+/.cproject
+/.project
+/build
