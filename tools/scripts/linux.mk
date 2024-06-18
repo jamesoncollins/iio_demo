@@ -17,6 +17,9 @@ $(PLATFORM)_sdkopen:
 	python $(PLATFORM_TOOLS)/config_build.py $(NO-OS) $(PROJECT) $(BINARY) $(HIDE)
 	$(call print, Workspace ready. Open $(PROJECT_BUILD) directory in VSCode for debug)
 
+$(PLATFORM)_post_build:
+	# nothing
+
 linux_run: $(BINARY)
 	$(BINARY)
 
